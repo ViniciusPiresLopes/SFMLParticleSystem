@@ -16,4 +16,4 @@ if __name__ == "__main__":
 
         print("Compiled with success!")
     except:
-        print("Got an error, please read the NOTE, above.")
+        print("Got an error, please read the NOTE")
