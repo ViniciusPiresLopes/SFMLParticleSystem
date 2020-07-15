@@ -56,6 +56,14 @@ public:
 	void show();
 
 	void hide();
+
+	void setGravity(const sf::Vector2f& gravity);
+
+	sf::Vector2f getGravity() const;
+
+	void setSpeed(const sf::Vector2f& speed);
+
+	sf::Vector2f getSpeed() const;
 };
 
 #endif /* PARTICLE_H_ */

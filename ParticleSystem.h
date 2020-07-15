@@ -59,9 +59,11 @@ private:
 	float m_frame2sec(const int& frame) const;
 	unsigned int m_sec2frame(const float& sec) const;
 public:
+	// Constructor and destructor
 	ParticleSystem(const SpawnAreaSpecs& saSpecs, const ParticleSystemSpecs& psSpecs);
 	virtual ~ParticleSystem();
 
+	// Functions
 	void restart();
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -71,6 +73,20 @@ public:
 	void setPosition(const sf::Vector2i& pos);
 
 	void setPosition(const sf::Vector2f& pos);
+
+	sf::Vector2f getPosition() const;
+
+	void setColor(const sf::Color& color);
+
+	sf::Color getColor() const;
+
+	void setGravity(const sf::Vector2f& gravity);
+
+	sf::Vector2f getGravity() const;
+
+	void hide();
+
+	void show();
 
 	void updateVariables();
 };

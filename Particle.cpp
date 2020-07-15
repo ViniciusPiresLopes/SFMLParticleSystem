@@ -20,6 +20,7 @@ Particle::~Particle() {}
 
 void Particle::start()
 {
+	setFillColor(sf::Color(getFillColor().r, getFillColor().g, getFillColor().b, 255));
 	m_started = true;
 	m_visible = true;
 }
@@ -71,4 +72,24 @@ void Particle::show()
 void Particle::hide()
 {
 	m_visible = false;
+}
+
+void Particle::setGravity(const sf::Vector2f& gravity)
+{
+	m_gravity = gravity;
+}
+
+sf::Vector2f Particle::getGravity() const
+{
+	return m_gravity;
+}
+
+void Particle::setSpeed(const sf::Vector2f& speed)
+{
+	m_speed = speed;
+}
+
+sf::Vector2f Particle::getSpeed() const
+{
+	return m_speed;
 }

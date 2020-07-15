@@ -44,11 +44,14 @@ void ParticleSystem::restart()
 
 void ParticleSystem::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (unsigned int i = 0; i < m_amount; i++)
+	if (m_visible)
 	{
-		if (m_particles[i].getVisible())
+		for (unsigned int i = 0; i < m_amount; i++)
 		{
-			target.draw(m_particles[i], states);
+			if (m_particles[i].getVisible())
+			{
+				target.draw(m_particles[i], states);
+			}
 		}
 	}
 }
@@ -95,6 +98,38 @@ void ParticleSystem::setPosition(const sf::Vector2f& pos)
 	updateVariables();
 }
 
+void ParticleSystem::setColor(const sf::Color& color)
+{
+	m_color = color;
+	updateVariables();
+}
+
+sf::Color ParticleSystem::getColor() const
+{
+	return m_color;
+}
+
+void ParticleSystem::setGravity(const sf::Vector2f& gravity)
+{
+	m_gravity = gravity;
+	updateVariables();
+}
+
+sf::Vector2f ParticleSystem::getGravity() const
+{
+	return m_gravity;
+}
+
+void ParticleSystem::hide()
+{
+	m_visible = false;
+}
+
+void ParticleSystem::show()
+{
+	m_visible = true;
+}
+
 void ParticleSystem::updateVariables()
 {
 	for (unsigned int i = 0; i < m_amount; i++)
@@ -103,6 +138,9 @@ void ParticleSystem::updateVariables()
 		{
 			sf::Vector2f pos(Random::randf() * m_size.x + m_pos.x, Random::randf() * m_size.y + m_pos.y);
 			m_particles[i].setPosition(pos);
+			m_particles[i].setFillColor(m_color);
+			m_particles[i].setGravity(m_gravity);
+			m_particles[i].setSpeed(m_speed);
 		}
 	}
 }
